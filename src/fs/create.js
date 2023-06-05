@@ -7,9 +7,9 @@ const create = async () => {
     const pathName = path.join(__dirname, '/files/fresh.txt');
     const content = 'I am fresh and young';
     try {
-      await writeFile(pathName, content, {flag: 'ax'});
+        await writeFile(pathName, content, {flag: 'ax'});
     } catch {
-      throw new Error('FS operation failed');
+        throw new Error('FS operation failed');
     }
 };
 
