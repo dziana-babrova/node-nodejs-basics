@@ -7,7 +7,6 @@ const list = async () => {
     const pathName = path.join(__dirname, '/files');
     try {
         const files = await readdir(pathName);
-        console.log(files);
     } catch (e) {
       throw new Error('FS operation failed');
     }
