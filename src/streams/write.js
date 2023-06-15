@@ -7,9 +7,7 @@ const write = async () => {
     const __dirname = url.fileURLToPath(new URL('.', import.meta.url));
     const pathName = path.join(__dirname, '/files/fileToWrite.txt');
     const stream = createWriteStream(pathName);
-    stdin.on('data', (chunk) => {
-        stream.write(chunk);
-    })
+    stdin.pipe(stream);
 };
 
 await write();
