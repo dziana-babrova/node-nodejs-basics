@@ -1,7 +1,7 @@
 import { Worker } from 'worker_threads';
 import path from 'path';
 import * as url from 'url';
-import {cpus} from 'os';
+import { cpus } from 'os';
 
 const runService = (workerData) => {
   const __dirname = url.fileURLToPath(new URL('.', import.meta.url));

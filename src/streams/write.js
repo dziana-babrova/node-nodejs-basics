@@ -4,10 +4,10 @@ import { stdin } from 'process';
 import * as url from 'url';
 
 const write = async () => {
-    const __dirname = url.fileURLToPath(new URL('.', import.meta.url));
-    const pathName = path.join(__dirname, '/files/fileToWrite.txt');
-    const stream = createWriteStream(pathName);
-    stdin.pipe(stream);
+  const __dirname = url.fileURLToPath(new URL('.', import.meta.url));
+  const pathName = path.join(__dirname, '/files/fileToWrite.txt');
+  const stream = createWriteStream(pathName);
+  stdin.pipe(stream);
 };
 
 await write();

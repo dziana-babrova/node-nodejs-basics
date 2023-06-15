@@ -6,20 +6,20 @@ import path from 'path';
 import { pipeline } from 'node:stream/promises';
 
 const decompress = async () => {
-    try {
-      const __dirname = url.fileURLToPath(new URL('.', import.meta.url));
-      const inputPathName = path.join(__dirname, '/files/archive.gz');
-      const outputPathName = path.join(__dirname, '/files/fileToCompress.txt');
+  try {
+    const __dirname = url.fileURLToPath(new URL('.', import.meta.url));
+    const inputPathName = path.join(__dirname, '/files/archive.gz');
+    const outputPathName = path.join(__dirname, '/files/fileToCompress.txt');
 
-      const gzip = createUnzip();
-      const source = createReadStream(inputPathName);
-      const destination = createWriteStream(outputPathName);
+    const gzip = createUnzip();
+    const source = createReadStream(inputPathName);
+    const destination = createWriteStream(outputPathName);
 
-      await pipeline(source, gzip, destination);
-      await unlink(inputPathName);
-    } catch {
-      throw new Error('FS operation failed');
-    }
+    await pipeline(source, gzip, destination);
+    await unlink(inputPathName);
+  } catch {
+    throw new Error('FS operation failed');
+  }
 };
 
 await decompress();

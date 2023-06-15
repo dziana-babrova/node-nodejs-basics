@@ -4,10 +4,10 @@ import { stdout } from 'process';
 import * as url from 'url';
 
 const read = async () => {
-    const __dirname = url.fileURLToPath(new URL('.', import.meta.url));
-    const pathName = path.join(__dirname, '/files/fileToRead.txt');
-    const fileStream = createReadStream(pathName, 'utf-8');
-    fileStream.pipe(stdout);
+  const __dirname = url.fileURLToPath(new URL('.', import.meta.url));
+  const pathName = path.join(__dirname, '/files/fileToRead.txt');
+  const fileStream = createReadStream(pathName, 'utf-8');
+  fileStream.pipe(stdout);
 };
 
 await read();
