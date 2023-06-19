@@ -1,29 +1,27 @@
-import { sep } from 'path';
+import path, { sep } from 'path';
 import * as url from 'url';
 import { release, version } from 'os';
 import { createServer as createServerHttp } from 'http';
+import { createRequire } from 'module';
 import './files/c.js';
 
+const createdRequire = createRequire(import.meta.url);
 const random = Math.random();
 
 let unknownObject;
 
+const __dirname = url.fileURLToPath(new URL('.', import.meta.url));
+const __filename = url.fileURLToPath(import.meta.url);
+
 if (random > 0.5) {
-  unknownObject = await import('./files/a.json', {
-    assert: { type: 'json' },
-  });
+  unknownObject = createdRequire(path.join(__dirname, './files/a.json'));
 } else {
-  unknownObject = await import('./files/a.json', {
-    assert: { type: 'json' },
-  });
+  unknownObject = createdRequire(path.join(__dirname, './files/b.json'));
 }
 
 console.log(`Release ${release()}`);
 console.log(`Version ${version()}`);
 console.log(`Path segment separator is "${sep}"`);
-
-const __dirname = url.fileURLToPath(new URL('.', import.meta.url));
-const __filename = url.fileURLToPath(import.meta.url);
 
 console.log(`Path to current file is ${__filename}`);
 console.log(`Path to current directory is ${__dirname}`);
